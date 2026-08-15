@@ -5,3 +5,4 @@ This is the Svg Editor. [Visit site](http://xchanroldan101.github.io/Svg-Editor)
 * Upload SVG Files
 * Change Grid Color to Light/Dark
 * Download SVG Files
+* See Image
