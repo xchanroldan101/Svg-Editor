@@ -71,26 +71,21 @@ exportBtn.addEventListener('click', () => {
     document.body.removeChild(downloader);
     URL.revokeObjectURL(url);
 });
-
-function updateHighlight() {
-  const textarea = document.getElementById("editing");
-  const highlightContent = document.getElementById("highlighting-content");
-    
-  let code = textarea.value;
-  code = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-  code = code.replace(
-    /(&lt;!--[\s\S]*?--&gt;)|(&lt;\/?[a-zA-Z0-9:-]+)|(\s[a-zA-Z0-9:-]+=)|("[\s\S]*?")|(&gt;|&lt;|\/&gt;)/g,
-    function(match, comment, tag, attr, string, bracket) {
-      if (comment) return `<span class="xml-comment">${comment}</span>`;
-      if (tag)     return `<span class="xml-tag">${tag}</span>`;
-      if (attr)    return `<span class="xml-attr">${attr}</span>`;
-      if (string)  return `<span class="xml-string">${string}</span>`;
-      if (bracket) return `<span class="xml-bracket">${bracket}</span>`;
-      return match;
-    }
-  );
-  highlightContent.innerHTML = code;
-    
-// Run initial execution pass
+// 1. Automatically inject the required styling layout directly into the page
+const style = document.createElement('style');
+style.textContent = `
+  /* This rule hides the raw text so you can see the color spans underneath */
+  #editing {
+    color: transparent !important;
+    caret-color: #ffffff !important; /* Keeps your flashing text cursor visible */
+    background: transparent !important;
+  }
+  /* Color rules for tokens */
+  .xml-tag     { color: #569cd6 !important; }
+  .xml-attr    { color: #9cdcfe !important; }
+  .xml-string  { color: #ce9178 !important; }
+  .xml-comment { color: #6a9955 !important; }
+  .xml-bracket { color: #808080 !important; }
+`;
+document.head.appendChild(style);// Run initial execution pass
 processXML();
