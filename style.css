@@ -42,6 +42,18 @@ textarea {
     outline: none;
 }
 
+.Filename {
+    background: #0f172a;
+    color: #fff;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    font-family: sans-serif;
+    padding: 12px;
+    resize: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
 #errorLog {
     color: var(--error);
     font-size: 13px;
