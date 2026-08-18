@@ -5,7 +5,7 @@ const fileInput = document.getElementById('fileInput');
 const errorLog = document.getElementById('errorLog');
 const canvasContainer = document.getElementById('canvasContainer');
 const canvasNode = document.getElementById('canvasNode');
-const fileNameInput = document.getElememtById('Filename');
+const fileNameInput = document.getElementById('Filename');
 
 let isDarkGrid = false;
 
@@ -23,7 +23,7 @@ function processXML() {
         errorLog.style.display = "none";
         const rootElement = doc.documentElement;
         if (!rootElement.getAttribute("xmlns")) {
-            rootElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            rootElement.setAttribute("xmlns", "http://w3.org");
         }
         canvasNode.innerHTML = "";
         canvasNode.appendChild(rootElement.cloneNode(true));
@@ -66,28 +66,30 @@ exportBtn.addEventListener('click', () => {
     const url = URL.createObjectURL(blob);
 
     let fileName = fileNameInput.value.trim() || 'vector-manifest';
+    
+    const downloader = document.createElement('a');
     downloader.href = url;
-    downloader.download = fileNameInput.value + ".svg";
+    downloader.download = `${fileName}.svg`;
+    
     document.body.appendChild(downloader);
     downloader.click();
     document.body.removeChild(downloader);
     URL.revokeObjectURL(url);
 });
-// 1. Automatically inject the required styling layout directly into the page
+
 const style = document.createElement('style');
 style.textContent = `
-  /* This rule hides the raw text so you can see the color spans underneath */
   #editing {
     color: transparent !important;
-    caret-color: #ffffff !important; /* Keeps your flashing text cursor visible */
+    caret-color: #ffffff !important;
     background: transparent !important;
   }
-  /* Color rules for tokens */
   .xml-tag     { color: #569cd6 !important; }
   .xml-attr    { color: #9cdcfe !important; }
   .xml-string  { color: #ce9178 !important; }
   .xml-comment { color: #6a9955 !important; }
   .xml-bracket { color: #808080 !important; }
 `;
-document.head.appendChild(style);// Run initial execution pass
+document.head.appendChild(style);
+
 processXML();
