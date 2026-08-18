@@ -5,6 +5,7 @@ const fileInput = document.getElementById('fileInput');
 const errorLog = document.getElementById('errorLog');
 const canvasContainer = document.getElementById('canvasContainer');
 const canvasNode = document.getElementById('canvasNode');
+const fileNameInput = document.getElememtById('Filename');
 
 let isDarkGrid = false;
 
