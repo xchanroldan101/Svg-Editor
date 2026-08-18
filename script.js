@@ -66,7 +66,7 @@ exportBtn.addEventListener('click', () => {
     const url = URL.createObjectURL(blob);
     const downloader = document.createElement("a");
     downloader.href = url;
-    downloader.download = "vector-manifest.svg";
+    downloader.download = fileNameInput.value + ".svg";
     document.body.appendChild(downloader);
     downloader.click();
     document.body.removeChild(downloader);
