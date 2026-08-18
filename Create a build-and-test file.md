@@ -1,0 +1,27 @@
+Copy and paste to the workflow run code
+``` yaml
+name: Manual and Automated Workflow
+
+# 1. Choose when the workflow runs
+on:
+  workflow_dispatch: # Allows you to run it using the 'gh workflow run' command
+  push:
+    branches: [ "main" ] # Automatically runs when code is pushed to main
+
+# 2. Define the tasks to execute
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # The operating system of the runner
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo "Hello World!"
+
+      - name: Run a multi-line script
+        run: |
+          echo "Current directory:"
+          pwd
+```
