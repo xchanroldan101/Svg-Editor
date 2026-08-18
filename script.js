@@ -64,7 +64,8 @@ exportBtn.addEventListener('click', () => {
 
     const blob = new Blob([validContent], {type: "image/svg+xml;charset=utf-8"});
     const url = URL.createObjectURL(blob);
-    const downloader = document.createElement("a");
+
+    let fileName = fileNameInput.value.trim() || 'vector-manifest';
     downloader.href = url;
     downloader.download = fileNameInput.value + ".svg";
     document.body.appendChild(downloader);
