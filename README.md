@@ -6,3 +6,4 @@ This is the Svg Editor. [Visit site](http://xchanroldan101.github.io/Svg-Editor)
 * Change Grid Color to Light/Dark
 * Download SVG Files
 * See Image
+Here is the live preview of the image:
