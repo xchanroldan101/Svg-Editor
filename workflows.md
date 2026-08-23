@@ -39,3 +39,5 @@ jobs:
       - name: Run automated tests
         run: npm test --if-present
 ```
+
+The end
