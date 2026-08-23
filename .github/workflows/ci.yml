@@ -16,9 +16,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
-      # Using 'npm install' prevents the Exit Code 1 error you saw earlier
       - name: Install dependencies
         run: npm install
 
