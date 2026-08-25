@@ -8,4 +8,4 @@ This is the Svg Editor. [Visit site](http://xchanroldan101.github.io/Svg-Editor)
 * See Image
 
 Here is the preview of the image:
-![Screenshot](IMG_20260819_233530.jpeg)
+![IMG_20260819_233530.jpeg](IMG_20260819_233530.jpg)
