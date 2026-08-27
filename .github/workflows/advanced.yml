@@ -20,12 +20,34 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
   checks: write
 
 jobs:
+  version-and-bump:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Auto Increment Patch Version
+        run: |
+          npm version patch -m "chore: bump version to %s [skip ci]"
+          git push origin main --follow-tags
+
   lint-and-audit:
+    needs: version-and-bump
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
