@@ -1,10 +1,11 @@
 {
   "name": "Svg-Editor",
-  "version": "1.0.0",
-  "description": "This is the Svg Editor. https://xchanroldan101.github.io/Svg-Editor",
+  "version": "1.0.1",
+  "description": "This is the Svg Editor. https://github.io",
   "private": true,
   "type": "module",
   "scripts": {
+    "postversion": "node version-bump.js",
     "lint": "eslint index.js",
     "test:coverage": "jest --coverage",
     "build": "echo 'Static HTML project. Skipping compilation steps...'",
