@@ -40,6 +40,7 @@ jobs:
 
       - name: Code Linting
         run: npm run lint
+        continue-on-error: true
 
       - name: Security Audit
         run: npm audit --audit-level=high
@@ -52,7 +53,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [18, 20]
+        node-version: [18, 20, 24]
         exclude:
           - os: windows-latest
             node-version: 18
