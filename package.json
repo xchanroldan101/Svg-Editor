@@ -1,7 +1,7 @@
 {
   "name": "Svg-Editor",
   "version": "1.0.0",
-  "description": "XML Vector Workspace code editor, free, no signup, import, export SVG files, dark and light grid, view images, errors, you can download this site as a zip.",
+  "description": "This is the Svg Editor. https://xchanroldan101.github.io/Svg-Editor",
   "private": true,
   "type": "module",
   "scripts": {
